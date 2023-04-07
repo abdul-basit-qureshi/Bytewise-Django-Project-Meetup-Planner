@@ -1,0 +1,18 @@
+<!-- folder name is not neccessary to be include -->
+<li class="meetup-item">
+    <article>
+        <div class="meetup-summary">
+            <div class="meetup-image">
+                <img src="{{ image }}" alt="">  <!-- image is a variable, defined in index.html -->
+            </div>
+            <div class="meetup-details">
+                <h3>{{ title }}</h3>
+                <address>{{ location }}</address>
+            </div>
+        </div>
+        <div class="meetup-actions">
+            <!-- <a href="/meetups/{{ meetup_items.slug }}" class="btn">More Detials</a>    if we changed the link in urls, we have to change links and refernces name all over the project, for this we used url method -->
+            <a href="{% url 'meetup-detail' slug %}" class="btn">More Detials</a>
+        </div>
+    </article>
+</li>

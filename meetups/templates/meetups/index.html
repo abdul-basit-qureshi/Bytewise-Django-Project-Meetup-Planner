@@ -1,0 +1,31 @@
+<!-- giving link for template file -->
+{% extends 'meetups/base/base.html' %}
+
+{% load static %}
+
+{% block title%}{% endblock %}
+
+{% block site_css %}
+<link rel="stylesheet" href="{% static 'meetups/styles/all-meetups.css' %}">
+{% endblock %}
+
+{% block main_heading %}
+We got great meetups coming up!
+{% endblock %}
+
+{% block header_content%}
+<p>Find the best one that suits your needs!</p>
+{% endblock %}
+
+{% block body %}
+<section>
+    <h2>Upcoming Meetups</h2>
+    <ol>
+        {% for meetup_items in meetups %}
+            <!-- may be that list can be used in other parts of the code, so we don't have to write it again n again, just include it  -->
+            {% include 'meetups/includes/meetup-item.html' with title=meetup_items.title location=meetup_items.location slug=meetup_items.slug image=meetup_items.image.url %}
+            <!-- using with, we make a variable -->
+        {% endfor %}
+    </ol>
+</section>
+{% endblock %}

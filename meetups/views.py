@@ -41,7 +41,7 @@ def meetup_details(request, meetup_slug):
             if registration_form.is_valid():
                 # participant =  registration_form.save() #due to save(), if we use same email with another meeting, we will get error
                 userEmail = registration_form.cleaned_data['email']
-                participant = Participant.objects.get_or_create(email=userEmail) #if email is not already created then create one
+                participant, was_created = Participant.objects.get_or_create(email=userEmail) #if email is not already created then create one
                 selected_meetup.participants.add(participant)
                 return redirect('confirm-registration', meetup_slug=meetup_slug) # return after saving data to database, pass the name of path in redirect()
 
